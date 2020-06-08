@@ -49,3 +49,19 @@ Your new sealed secret will now be in `sealed-secrets/<env>`.
 ## 6. Commit changes.
 
 This part is self-explanatory.
+
+## 7. Located the sealed secret
+
+To locate the `SealedSecret` resource, simply execute:
+
+```
+kubectl get sealedsecrets.bitnami.com
+```
+
+## 8. Locate the un-sealed secret
+
+To locate the unsealed secret (`secret`) resource, simply execute:
+
+```
+kubectl get secrets
+```
