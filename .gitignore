@@ -1,0 +1,10 @@
+# Created by .ignore support plugin (hsz.mobi)
+keys/dev.crt
+
+.idea/
+local-sealed/**/*.yaml
+local-sealed/**/*.yml
+local-sealed/**/*.json
+local-toseal/**/*.yaml
+local-toseal/**/*.yml
+local-toseal/**/*.json
