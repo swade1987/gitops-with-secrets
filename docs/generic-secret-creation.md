@@ -9,27 +9,19 @@ An example can be found in [example/test.env](../example/test.env).
 Then create a generic secret using the following command:
 
 ```
-kubectl create secret generic test-secret --namespace=default --from-env-file=example/test.env --dry-run=client -o yaml > local-toseal/dev/default-test-secret.yaml
+kubectl create secret generic test-secret \
+--namespace=default \
+--from-env-file=example/test.env \
+--dry-run=client -o yaml > local-toseal/dev/default-test-secret.yaml
 ```
 
-You can also create the new secret values by using the base64 command, but make sure you specify `-n` to avoid new line chars at the end of your secret.
+The filename structure is extremely important see below:
 
 ```
-echo -n 'secret' | base64
-```
-
-Important: The filename needs to be `<namespace>-<secret name>.yaml`.
-
-The file should contain something similar to below:
-
-```
-apiVersion: v1
-kind: Secret
-metadata:
-  name: <secret_name>
-  namespace: <secret_namespace>
-data:
-  secretThing: WW91IGZvdW5kIG1lIDE=
+kubectl create secret generic <secret name> \
+--namespace=<namespace> \
+--from-env-file=<env file> \
+--dry-run -o yaml > <filename>.yaml
 ```
 
 ## 3. Locate the file in the appropriate directory.
@@ -56,6 +48,9 @@ To locate the `SealedSecret` resource, simply execute:
 
 ```
 kubectl get sealedsecrets.bitnami.com
+
+NAME          AGE
+test-secret   29s
 ```
 
 ## 8. Locate the un-sealed secret
@@ -64,4 +59,5 @@ To locate the unsealed secret (`secret`) resource, simply execute:
 
 ```
 kubectl get secrets
+
 ```

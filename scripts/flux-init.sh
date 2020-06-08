@@ -20,14 +20,14 @@ fi
 REPO_GIT_INIT_PATHS="sealed-secrets/dev"
 REPO_ROOT=$(git rev-parse --show-toplevel)
 REPO_URL=${1:-git@github.com:swade1987/gitops-with-secrets}
-REPO_BRANCH=master
+REPO_BRANCH=skeleton
 TEMP=${REPO_ROOT}/temp
 
 rm -rf ${TEMP} && mkdir ${TEMP}
 
 helm repo add fluxcd https://charts.fluxcd.io
 
-echo ">>> Installing Flux for ${REPO_URL} only watching the ${REPO_GIT_INIT_PATHS} directory"
+echo ">>> Installing Flux for ${REPO_URL} only watching the ${REPO_GIT_INIT_PATHS} directory on the ${REPO_BRANCH} branch."
 kubectl create ns flux || true
 helm upgrade -i flux fluxcd/flux --wait \
 --set git.url=${REPO_URL} \
