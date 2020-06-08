@@ -1,4 +1,4 @@
-# GitOps (using Kustomize)
+# GitOps (with secrets) 🔒
 
 An example repo structure for GitOps using:
 
@@ -80,6 +80,10 @@ To clean out all local secrets run:
 ```
 $ make clean
 ```
+
+### How do I tear down the demo?
+
+Simply execute `make destroy`
 
 ## Gotchas
 
