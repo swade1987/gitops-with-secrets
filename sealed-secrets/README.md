@@ -1,0 +1,1 @@
+In this directory sits all the Sealed Secrets for each of the environments.
